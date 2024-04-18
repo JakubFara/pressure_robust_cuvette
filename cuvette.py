@@ -4,7 +4,7 @@ import firedrake as fd
 mesh = fd.Mesh("square_with_hole.msh")
 
 k = 2
-V = fd.FunctionSpace(m, 'CG', k)
+V = fd.FunctionSpace(mesh, 'CG', k)
 
 x = fdSpatialCoordinate(mesh)
 expr = x[0] / fd.sqrt(x[0]**2 + x[1]**2)
