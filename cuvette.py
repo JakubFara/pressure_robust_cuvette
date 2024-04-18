@@ -6,8 +6,7 @@ mesh = fd.Mesh("square_with_hole.msh")
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
-x = fd.SpatialCoordinate(mesh)
-x, y = SpatialCoordinate(mesh)
+x, y = fd.SpatialCoordinate(mesh)
 expr_x_outer = x / fd.sqrt(x**2 + y**2)
 expr_y_outer = y / fd.sqrt(x**2 + y**2)
 expr_x_inner = 0.5 * x / fd.sqrt(x**2 + y**2)
