@@ -7,6 +7,7 @@ k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
 x = fd.SpatialCoordinate(mesh)
+print(x)
 expr_x_outer = x[0] / fd.sqrt(x[0]**2 + x[1]**2)
 expr_y_outer = x[1] / fd.sqrt(x[0]**2 + x[1]**2)
 expr_x_inner = 0.5 * x[0] / fd.sqrt(x[0]**2 + x[1]**2)
