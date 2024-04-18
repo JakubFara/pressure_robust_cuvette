@@ -27,7 +27,7 @@ bcs = [
 dx = fd.dx(degree=4)
 
 phi_u = fd.TestFunction(V)
-u = fd.TrialFunction(V)
+u = fd.Function(V)
 
 form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
