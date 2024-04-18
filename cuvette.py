@@ -33,4 +33,4 @@ form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
 J = fd.derivative(form, u)
 
-problem = fd.NonlinearVariationalProblem(form, w, bcs=bcs, J=J)
+problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
