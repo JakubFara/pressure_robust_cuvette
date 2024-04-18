@@ -7,11 +7,11 @@ k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
 x = fd.SpatialCoordinate(mesh)
-print(x[0], x[1])
-expr_x_outer = x[0] / fd.sqrt(x[0]**2 + x[1]**2)
-expr_y_outer = x[1] / fd.sqrt(x[0]**2 + x[1]**2)
-expr_x_inner = 0.5 * x[0] / fd.sqrt(x[0]**2 + x[1]**2)
-expr_y_inner = 0.5 * x[1] / fd.sqrt(x[0]**2 + x[1]**2)
+x, y = SpatialCoordinate(mesh)
+expr_x_outer = x / fd.sqrt(x**2 + y**2)
+expr_y_outer = y / fd.sqrt(x**2 + y**2)
+expr_x_inner = 0.5 * x / fd.sqrt(x**2 + y**2)
+expr_y_inner = 0.5 * y / fd.sqrt(x**2 + y**2)
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, 1)
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, 1)
