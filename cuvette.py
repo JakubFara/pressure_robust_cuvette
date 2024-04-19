@@ -8,32 +8,32 @@ mesh = fd.UnitSquareMesh(20, 20)
 k = 1
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
-x, y = fd.SpatialCoordinate(mesh)
-expr_x_outer = x / fd.sqrt(x**2 + y**2)
-expr_y_outer = y / fd.sqrt(x**2 + y**2)
-expr_x_inner = 0.7 * x / fd.sqrt(x**2 + y**2)
-expr_y_inner = 0.7 * y / fd.sqrt(x**2 + y**2)
+# x, y = fd.SpatialCoordinate(mesh)
+# expr_x_outer = x / fd.sqrt(x**2 + y**2)
+# expr_y_outer = y / fd.sqrt(x**2 + y**2)
+# expr_x_inner = 0.7 * x / fd.sqrt(x**2 + y**2)
+# expr_y_inner = 0.7 * y / fd.sqrt(x**2 + y**2)
 
-bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, (11, 12, 13, 14))
-bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, (11, 12, 13, 14))
-bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner, (21, 22, 23, 24))
-bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner, (21, 22, 23, 24))
+# bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, (11, 12, 13, 14))
+# bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, (11, 12, 13, 14))
+# bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner, (21, 22, 23, 24))
+# bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner, (21, 22, 23, 24))
 
-bcs = [
-    bc_x_outer,
-    bc_y_outer,
-    bc_x_inner,
-    bc_y_inner,
-]
+# bcs = [
+#     bc_x_outer,
+#     bc_y_outer,
+#     bc_x_inner,
+#     bc_y_inner,
+# ]
 
-dx = fd.dx(degree=4)
+# dx = fd.dx(degree=4)
 
-phi_u = fd.TestFunction(V)
+# phi_u = fd.TestFunction(V)
 u = fd.Function(V)
 
-form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
+# form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
-J = fd.derivative(form, u)
+# J = fd.derivative(form, u)
 
 fileu = VTKFile(f"out/u.pvd")
 u.rename("displacement")
