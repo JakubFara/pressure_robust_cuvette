@@ -2,7 +2,7 @@ import firedrake as fd
 from firedrake.output import VTKFile
 
 # mesh = fd.Mesh("immersed_domain.msh", dim=2)
-mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
+mesh = fd.Mesh("mesh.msh", dim=2)
 # mesh = fd.UnitSquareMesh(20, 20)
 
 k = 2
@@ -32,10 +32,7 @@ phi_u = fd.TestFunction(V)
 u = fd.Function(V)
 
 form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
-
 J = fd.derivative(form, u)
-
-
 
 problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
 
@@ -55,4 +52,4 @@ solver.solve()
 
 fileu = VTKFile("u.pvd")
 u.rename("displacement")
-fileu.write(v)
+fileu.write(u)
