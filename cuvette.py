@@ -116,7 +116,7 @@ bc_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
 
 bcs_v_hat = [
     bc_outer,
-    bc_inner,
+    # bc_inner,
 ]
 
 # Build functions
@@ -129,12 +129,14 @@ J = fd.det(F)
 v = 1 / J * F * v_hat
 phi_v = 1 / J * F * phi_v_hat
 
-L = fd.grad(v)
 
 inv_F = fd.inv(F)
-L = L * inv_F
+L = fd.grad(v) * inv_F
+phi_L = fd.grad(phi_v) * inv_F
 D = 0.5 * (L + L.T)
+phi_D = 0.5 * (phi_L + phi_L.T)
 T = - p * I + 2.0 * mu * D
+phi_T = -p * I + 2 * mu * phi_D
 
 # Data Forces
 force = fd.Constant((0, 0))
@@ -147,7 +149,15 @@ Eq2 = (
     - J * rho * fd.inner(force, phi_v) * fd.dx
 )
 
-Eq = Eq1 + Eq2
+# Nitsche eq. (free surface + walls)
+ds_sum = fd.ds(11) + fd.ds(12) + fd.ds(13) + fd.ds(14)
+Eq4 = (
+    -fd.inner(T * n, u_) * ds_sum
+    + fd.inner(phi_T * n, u - (v + v_bndry)) * ds_sum
+    + 1000.0/h*fd.inner(u - (v + v_bndry), u_) * ds_sum
+)
+
+Eq = Eq1 + Eq2 + Eq4
 
 jacobian = fd.derivative(Eq, w)
 
