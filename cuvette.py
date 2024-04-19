@@ -144,7 +144,8 @@ lu = {
 solver = fd.NonlinearVariationalSolver(problem, solver_parameters=lu)
 solver.solve()
 
-v, p  = w.subfunctions
+v_hat, p  = w.subfunctions
+v = fd.project(1 / J * F * v_hat, fd.VectorFunctionSpace(mesh, "CG", k))
 v.rename("velocity")
 p.rename("pressure")
 
