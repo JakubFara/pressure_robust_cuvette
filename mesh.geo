@@ -1,26 +1,35 @@
-Point(1) = {-6,  2, 0, 0.5};
-Point(2) = {-6, -2, 0, 0.5};
-Point(3) = { 6, -2, 0, 0.5};
-Point(4) = { 6,  2, 0, 0.5};
-Point(5) = { 0,  0, 0, 0.1};
-Point(6) = { 1,  0, 0, 0.1};
-Point(7) = {-1,  0, 0, 0.1};
-Point(8) = { 0,  1, 0, 0.1};
-Point(9) = { 0, -1, 0, 0.1};
-Line(1) = {1, 4};
-Line(2) = {4, 3};
-Line(3) = {3, 2};
-Line(4) = {2, 1};
-Circle(5) = {8, 5, 6};
-Circle(6) = {6, 5, 9};
-Circle(7) = {9, 5, 7};
-Circle(8) = {7, 5, 8};
+h = 0.02;
+Point(1) = { -1, -1, 0, h};
+Point(2) = { 1,  -1, 0, h};
+Point(3) = { 1,  1, 0, h};
+Point(4) = { -1, 1, 0, h};
+Point(5) = { -0.5, -0.5, 0, h};
+Point(6) = { 0.5,  -0.5, 0, h};
+Point(7) = { 0.5,  0.5, 0, h};
+Point(8) = { -0.5, 0.5, 0, h};
+
+Line(1) = {1, 2};
+Line(2) = {2, 3};
+Line(3) = {3, 4};
+Line(4) = {4, 1};
+
+Line(5) = {5, 6};
+Line(6) = {6, 7};
+Line(7) = {7, 8};
+Line(8) = {8, 5};
+
 Curve Loop( 9) = {1, 2, 3, 4};
-Curve Loop(10) = {8, 5, 6, 7};
+Curve Loop(10) = {5, 6, 7, 8};
 Plane Surface(1) = {9, 10};
-Plane Surface(2) = {10};
-Physical Curve("HorEdges", 11) = {1, 3};
-Physical Curve("VerEdges", 12) = {2, 4};
-Physical Curve("Circle", 13) = {8, 7, 6, 5};
-Physical Surface("PunchedDom", 3) = {1};
-Physical Surface("Disc", 4) = {2};
+
+Physical Curve("outer_bottom", 11) = {1};
+Physical Curve("outer_left", 12) = {2};
+Physical Curve("outer_top", 13) = {3};
+Physical Curve("outer_bottom", 14) = {4};
+
+Physical Curve("outer_bottom", 21) = {5};
+Physical Curve("outer_left", 22) = {6};
+Physical Curve("outer_top", 23) = {7};
+Physical Curve("outer_bottom", 24) = {8};
+
+Physical Surface("surface", 1) = {1};
