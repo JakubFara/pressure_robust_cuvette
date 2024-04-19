@@ -176,4 +176,4 @@ filep = fd.File(f"output/p.pvd")
 
 filev.write(v)
 filep.write(p)
-filev_hat_bndry.write(v_hat_bndry)
+filev_hat_bndry.write(v_bndry)
