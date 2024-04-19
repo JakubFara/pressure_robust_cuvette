@@ -100,7 +100,7 @@ bcs_v_bndry = [
 
 form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_bndry)) * dx
 jacobian_bndry = fd.derivative(form_bndry, v_bndry)
-problem_bndry = fd.NonlinearVariationalProblem(form, v_bndry, bcs=bcs_v_bndry, J=jacobian_bndry)
+problem_bndry = fd.NonlinearVariationalProblem(form_bndry, v_bndry, bcs=bcs_v_bndry, J=jacobian_bndry)
 solver_bndry = fd.NonlinearVariationalSolver(problem_bndry, solver_parameters=lu)
 solver.solve()
 v_hat_bndry = fd.project(J * fd.inv(F) * v_hat, fd.VectorFunctionSpace(mesh, "CG", k))
