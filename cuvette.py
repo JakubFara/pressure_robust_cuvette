@@ -154,7 +154,7 @@ jacobian = fd.derivative(Eq, w)
 problem = fd.NonlinearVariationalProblem(Eq, w, bcs=bcs_v_hat, J=jacobian)
 lu = {
     "mat_type": "aij",
-    "snes_type": "newtonls",
+    # "snes_type": "newtonls",
     "snes_monitor": None,
     "snes_converged_reason": None,
     "snes_max_it": 12,
