@@ -102,7 +102,7 @@ form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_bndry)) * dx
 jacobian_bndry = fd.derivative(form_bndry, v_bndry)
 problem_bndry = fd.NonlinearVariationalProblem(form_bndry, v_bndry, bcs=bcs_v_bndry, J=jacobian_bndry)
 solver_bndry = fd.NonlinearVariationalSolver(problem_bndry, solver_parameters=lu)
-solver.solve()
+solver_bndry.solve()
 I = fd.Identity(2)
 F = I + fd.grad(u)
 J = fd.det(F)
