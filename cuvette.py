@@ -1,7 +1,7 @@
 import firedrake as fd
 
 # mesh = fd.Mesh("square_with_hole.msh", dim=2)
-mesh = fd.Mesh("mesh.msh", dim=2)
+mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
 # mesh = fd.UnitSquareMesh(2,2)
 
 k = 2
@@ -34,7 +34,7 @@ form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
 J = fd.derivative(form, u)
 
-fileu = fd.File(f"out/u.vtk")
+fileu = fd.File(f"out/u.pvd")
 u.rename("displacement")
 fileu.write(u, time=0)
 
