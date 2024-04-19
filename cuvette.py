@@ -51,7 +51,7 @@ p.rename("pressure")
 
 fileu = VTKFile("u.pvd")
 # u.rename("displacement")
-fileu.write(u)
+fileu.write(v)
 
 # problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
 
