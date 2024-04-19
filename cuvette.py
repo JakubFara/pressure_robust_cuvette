@@ -2,8 +2,8 @@ import firedrake as fd
 from firedrake.output import VTKFile
 
 # mesh = fd.Mesh("immersed_domain.msh", dim=2)
-# mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
-mesh = fd.UnitSquareMesh(20, 20)
+mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
+# mesh = fd.UnitSquareMesh(20, 20)
 
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'DG', k)
