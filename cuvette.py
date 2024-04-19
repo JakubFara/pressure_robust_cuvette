@@ -81,21 +81,21 @@ fileu.write(u)
 # Material params
 mu = fd.Constant(1.5)
 
-expr_x_outer = 0
-expr_y_outer = 0
-expr_x_inner = 0
-expr_y_inner = 0.5#  * y / fd.sqrt(x**2 + y**2)
+expr_x_outer_bndry = 0
+expr_y_outer_bndry = 0
+expr_x_inner_bndry = 0.5 * y / fd.sqrt(x**2 + y**2)
+expr_y_inner_bndry = - 0.5 * x / fd.sqrt(x**2 + y**2)
 
-bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, (11, 12, 13, 14))
-bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, (11, 12, 13, 14))
-bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner, (21, 22, 23, 24))
-bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner, (21, 22, 23, 24))
+bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer_bndry, (11, 12, 13, 14))
+bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer_bndry, (11, 12, 13, 14))
+bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner_bndry, (21, 22, 23, 24))
+bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner_bndry, (21, 22, 23, 24))
 
 bcs_v_bndry = [
-    bc_x_outer,
-    bc_y_outer,
-    bc_x_inner,
-    bc_y_inner,
+    bc_x_outer_bndry,
+    bc_y_outer_bndry,
+    bc_x_inner_bndry,
+    bc_y_inner_bndry,
 ]
 
 form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_bndry)) * dx
