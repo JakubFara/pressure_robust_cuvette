@@ -36,15 +36,20 @@ inner_lines = [
     factory.add_line(inner_points[3], inner_points[0]),
 ]
 
+gmsh.model.geo.synchronize()
 loop_outer = factory.add_curve_loop(outer_lines)
 loop_inner = factory.add_curve_loop(inner_lines)
 
 gmsh.model.geo.addPlaneSurface([loop_outer, loop_inner], 1)
 
 gmsh.model.geo.synchronize()
+
+gmsh.model.addPhysicalGroup(1, [outer_lines[0], outer_lines[1], outer_lines[2], outer_lines[3]], 3333)  # wall
+gmsh.model.addPhysicalGroup(1, inner_lines, 20)  # wall
+
+gmsh.model.geo.synchronize()
+
 gmsh.model.addPhysicalGroup(2, [2], 1)
-gmsh.model.addPhysicalGroup(1, outer_lines, 1)  # wall
-gmsh.model.addPhysicalGroup(1, inner_lines, 2)  # wall
 
 gmsh.model.geo.synchronize()
 gmsh.model.mesh.generate(2)
