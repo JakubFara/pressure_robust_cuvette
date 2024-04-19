@@ -153,6 +153,7 @@ Eq2 = (
 ds_sum = fd.ds(11) + fd.ds(12) + fd.ds(13) + fd.ds(14)
 
 n = fd.FacetNormal(mesh)
+h = fd.CellDiameter(mesh)
 Eq4 = (
     -fd.inner(T * n, phi_v) * ds_sum
     + fd.inner(phi_T * n, u - (v + v_bndry)) * ds_sum
