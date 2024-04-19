@@ -125,9 +125,9 @@ Eq2 = (
 
 Eq = Eq1 + Eq2
 
-J = fd.derivative(Eq, w)
+jacobian = fd.derivative(Eq, w)
 
-problem = fd.NonlinearVariationalProblem(Eq, w, bcs=bcs_v, J=J)
+problem = fd.NonlinearVariationalProblem(Eq, w, bcs=bcs_v, J=jacobian)
 lu = {
     "mat_type": "aij",
     "snes_type": "newtonls",
