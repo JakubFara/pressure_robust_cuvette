@@ -22,7 +22,7 @@ Curve Loop( 9) = {1, 2, 3, 4};
 Curve Loop(10) = {5, 6, 7, 8};
 Plane Surface(1) = {9, 10};
 
-Physical Curve("outer_bottom", 15) = {1};
+Physical Curve("outer_bottom", 11) = {1};
 Physical Curve("outer_left", 12) = {2};
 Physical Curve("outer_top", 13) = {3};
 Physical Curve("outer_right", 14) = {4};
