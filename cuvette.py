@@ -38,7 +38,7 @@ u = fd.Function(V)
 
 Ev = fd.VectorFunctionSpace(mesh, "CG", 2) #velocity
 Eu = fd.VectorFunctionSpace(mesh, "CG", 1) #displacement
-Ep = fd.FunctionSpace(mesh, "DG") #pressure
+Ep = fd.FunctionSpace(mesh, "DG", 1) #pressure
 
 # Build function spaces
 W = fd.MixedFunctionSpace([Ev, Eu, Ep])
