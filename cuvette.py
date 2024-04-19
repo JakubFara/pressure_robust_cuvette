@@ -154,7 +154,7 @@ ds_sum = fd.ds(11) + fd.ds(12) + fd.ds(13) + fd.ds(14)
 
 n = fd.FacetNormal(mesh)
 Eq4 = (
-    -fd.inner(T * n, u_) * ds_sum
+    -fd.inner(T * n, phi_v) * ds_sum
     + fd.inner(phi_T * n, u - (v + v_bndry)) * ds_sum
     + 1000.0/h*fd.inner(u - (v + v_bndry), u_) * ds_sum
 )
