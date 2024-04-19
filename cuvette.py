@@ -35,6 +35,19 @@ u = fd.Function(V)
 
 # J = fd.derivative(form, u)
 
+
+Ev = fd.VectorFunctionSpace(mesh, "CG", 2) #velocity
+Eu = fd.VectorFunctionSpace(mesh, "CG", 1) #displacement
+Ep = fd.FunctionSpace(mesh, "DG") #pressure
+
+# Build function spaces
+W = fd.MixedFunctionSpace([Ev, Eu, Ep])
+
+v, u, p  = w.subfunctions
+v.rename("velocity")
+u.rename("displacement")
+p.rename("pressure")
+
 fileu = VTKFile("u.pvd")
 # u.rename("displacement")
 fileu.write(u)
