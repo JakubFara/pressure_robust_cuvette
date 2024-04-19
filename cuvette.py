@@ -34,3 +34,21 @@ form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 J = fd.derivative(form, u)
 
 problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
+
+lu = {"mat_type": "aij",
+      "snes_type": "newtonls",
+      "snes_monitor": None,
+      "snes_converged_reason": None,
+      "snes_max_it": 12,
+      "snes_rtol": 1e-11,
+      "snes_atol": 5e-10,
+      "snes_linesearch_type": "basic",
+      "ksp_type": "preonly",
+      "pc_type": "lu",
+      "pc_factor_mat_solver_type": "mumps"}
+solver = fd.NonlinearVariationalSolver(problem, solver_parameters=lu)
+solver.solve()
+u.rename("displacement")
+
+fileu = fd.File(f"out/u.pvd")
+fileu.write(u)
