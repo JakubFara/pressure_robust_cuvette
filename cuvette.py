@@ -50,6 +50,7 @@ phi_v_hat, phi_p = fd.TestFunctions(W)
 u = fd.Function(V)
 phi_u = fd.TestFunction(V)
 v_hat_bndry = fd.Function(V)
+v_bndry = fd.Function(V)
 phi_v_hat_bndry = fd.TestFunction(V)
 
 form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
