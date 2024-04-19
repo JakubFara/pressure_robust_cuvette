@@ -34,6 +34,10 @@ form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
 J = fd.derivative(form, u)
 
+fileu = fd.File(f"out/u.pvd")
+u.rename("displacement")
+fileu.write(u, time=0)
+
 problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
 
 lu = {"mat_type": "aij",
@@ -49,8 +53,4 @@ lu = {"mat_type": "aij",
       "pc_factor_mat_solver_type": "mumps"}
 solver = fd.NonlinearVariationalSolver(problem, solver_parameters=lu)
 solver.solve()
-u.rename("displacement")
 
-fileu = fd.File(f"out/u.pvd")
-u.rename("displacement")
-fileu.write(u, time=0)
