@@ -112,7 +112,7 @@ filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
 filev_hat_bndry.write(v_hat_bndry)
 
 bc_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
-bc_inner = fd.DirichletBC(W.sub(0), v_bndry, (21, 22, 23, 24))
+bc_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
 
 bcs_v_hat = [
     bc_outer,
