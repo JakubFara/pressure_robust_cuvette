@@ -83,8 +83,8 @@ mu = fd.Constant(1.5)
 
 expr_x_outer = 0
 expr_y_outer = 0
-expr_x_inner = 0.5 * x / fd.sqrt(x**2 + y**2)
-expr_y_inner = 0.5 * y / fd.sqrt(x**2 + y**2)
+expr_x_inner = 0
+expr_y_inner = 0.5#  * y / fd.sqrt(x**2 + y**2)
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, (11, 12, 13, 14))
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, (11, 12, 13, 14))
