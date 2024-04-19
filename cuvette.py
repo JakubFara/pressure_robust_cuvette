@@ -4,7 +4,7 @@ import firedrake as fd
 # mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
 mesh = fd.UnitSquareMesh(20, 20)
 
-k = 2
+k = 1
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
 x, y = fd.SpatialCoordinate(mesh)
@@ -36,7 +36,7 @@ J = fd.derivative(form, u)
 
 fileu = fd.File(f"out/u.pvd")
 u.rename("displacement")
-fileu.write(u, time=0)
+fileu.write(u)
 
 # problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
 
