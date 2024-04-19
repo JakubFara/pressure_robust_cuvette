@@ -6,7 +6,7 @@ mesh = fd.Mesh("mesh.msh", dim=2)
 # mesh = fd.UnitSquareMesh(20, 20)
 
 k = 2
-V = fd.VectorFunctionSpace(mesh, 'DG', k)
+V = fd.VectorFunctionSpace(mesh, 'CG', k)
 
 x, y = fd.SpatialCoordinate(mesh)
 expr_x_outer = x / fd.sqrt(x**2 + y**2) - x
