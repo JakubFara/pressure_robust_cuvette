@@ -116,7 +116,6 @@ bcs_v_hat = [
     bc_inner,
 ]
 
-
 # Build functions
 # full ALE transformation
 I = fd.Identity(2)
@@ -172,7 +171,9 @@ v.rename("velocity")
 p.rename("pressure")
 
 filev = fd.File(f"output/v.pvd")
+filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
 filep = fd.File(f"output/p.pvd")
 
 filev.write(v)
 filep.write(p)
+filev_hat_bndry.write(v_hat_bndry)
