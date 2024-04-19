@@ -151,6 +151,8 @@ Eq2 = (
 
 # Nitsche eq. (free surface + walls)
 ds_sum = fd.ds(11) + fd.ds(12) + fd.ds(13) + fd.ds(14)
+
+n = fd.FacetNormal(mesh)
 Eq4 = (
     -fd.inner(T * n, u_) * ds_sum
     + fd.inner(phi_T * n, u - (v + v_bndry)) * ds_sum
