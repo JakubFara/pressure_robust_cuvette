@@ -156,8 +156,8 @@ n = fd.FacetNormal(mesh)
 h = fd.CellDiameter(mesh)
 Eq4 = (
     -fd.inner(T * n, phi_v) * ds_sum
-    + fd.inner(phi_T * n, u - (v + v_bndry)) * ds_sum
-    + 1000.0/h*fd.inner(u - (v + v_bndry), phi_v) * ds_sum
+    + fd.inner(phi_T * n, (v + v_bndry)) * ds_sum
+    + 1000.0/h * fd.inner(v + v_bndry, phi_v) * ds_sum
 )
 
 Eq = Eq1 + Eq2 + Eq4
