@@ -49,11 +49,13 @@ v_hat, p = fd.split(w)
 phi_v_hat, phi_p = fd.TestFunctions(W)
 u = fd.Function(V)
 phi_u = fd.TestFunction(V)
+v_hat_bndry = fd.Function(V)
+phi_v_hat_bndry = fd.TestFunction(V)
 
 form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
-J = fd.derivative(form, u)
+jacobian = fd.derivative(form, u)
 
-problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs_u, J=J)
+problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs_u, J=jacobian)
 
 lu = {
     "mat_type": "aij",
@@ -94,6 +96,25 @@ bcs_v = [
     bc_x_inner,
     bc_y_inner,
 ]
+
+form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_hat_bndry)) * dx
+jacobian_bndry = fd.derivative(form, v_bndry)
+problem_bndry = fd.NonlinearVariationalProblem(form, v_bndry, bcs=bcs_u, J=J)
+solver_bndry = fd.NonlinearVariationalSolver(problem_bndry, solver_parameters=lu)
+solver.solve()
+v_hat_bndry = fd.project(J * fd.inv(F) * v_hat, fd.VectorFunctionSpace(mesh, "CG", k))
+
+bc_x_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
+bc_x_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
+
+bcs_v_hat = [
+    bc_x_outer,
+    bc_y_outer,
+    bc_x_inner,
+    bc_y_inner,
+]
+
+
 
 # Build functions
 # full ALE transformation
