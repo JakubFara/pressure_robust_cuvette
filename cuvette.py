@@ -43,6 +43,7 @@ Ep = fd.FunctionSpace(mesh, "DG", 1) #pressure
 # Build function spaces
 W = fd.MixedFunctionSpace([Ev, Eu, Ep])
 
+w = fd.Function(W)
 v, u, p  = w.subfunctions
 v.rename("velocity")
 u.rename("displacement")
