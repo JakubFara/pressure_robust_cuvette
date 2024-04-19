@@ -20,7 +20,7 @@ Line(8) = {8, 5};
 
 Curve Loop( 9) = {1, 2, 3, 4};
 Curve Loop(10) = {5, 6, 7, 8};
-Plane Surface(1) = {9, 10};
+Plane Surface(1) = {9};
 
 Physical Curve("outer_bottom", 11) = {1};
 Physical Curve("outer_left", 12) = {2};
