@@ -34,7 +34,7 @@ form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 
 J = fd.derivative(form, u)
 
-fileu = fd.File(f"out/u.pvd")
+fileu = fd.File(f"out/u.vtk")
 u.rename("displacement")
 fileu.write(u, time=0)
 
