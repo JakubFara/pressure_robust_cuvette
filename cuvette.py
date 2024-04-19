@@ -102,8 +102,8 @@ I = fd.Identity(2)
 F = I + fd.grad(u)
 J = fd.det(F)
 
-v = 1 / Jhat * Fhat * v_hat
-phi_v = 1 / Jhat * Fhat * phi_v_hat
+v = 1 / J * F * v_hat
+phi_v = 1 / J * F * phi_v_hat
 
 L = fd.grad(v)
 
