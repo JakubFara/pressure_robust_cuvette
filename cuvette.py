@@ -25,8 +25,8 @@ Ep = fd.FunctionSpace(mesh, "DG", k - 1) # pressure
 W = fd.MixedFunctionSpace([Ev, Ep])
 
 x, y = fd.SpatialCoordinate(mesh)
-expr_x_outer = x / fd.sqrt(x**2 + y**2) - x
-expr_y_outer = y / fd.sqrt(x**2 + y**2) - y
+expr_x_outer = df.sqrt(2) * x / fd.sqrt(x**2 + y**2) - x
+expr_y_outer = df.sqrt(2) * y / fd.sqrt(x**2 + y**2) - y
 expr_x_inner = 0.5 * x / fd.sqrt(x**2 + y**2) - x
 expr_y_inner = 0.5 * y / fd.sqrt(x**2 + y**2) - y
 
