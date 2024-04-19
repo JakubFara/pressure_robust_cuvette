@@ -143,3 +143,13 @@ lu = {
 }
 solver = fd.NonlinearVariationalSolver(problem, solver_parameters=lu)
 solver.solve()
+
+v, p  = w.subfunctions
+v.rename("velocity")
+p.rename("pressure")
+
+filev = fd.File(f"output/v.pvd")
+filep = fd.File(f"output/p.pvd")
+
+filev.write(v)
+filep.write(p)
