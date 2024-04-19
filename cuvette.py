@@ -108,6 +108,9 @@ F = I + fd.grad(u)
 J = fd.det(F)
 v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "CG", k))
 
+filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
+filev_hat_bndry.write(v_bndry)
+
 bc_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
 bc_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
 
@@ -171,9 +174,7 @@ v.rename("velocity")
 p.rename("pressure")
 
 filev = fd.File(f"output/v.pvd")
-filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
 filep = fd.File(f"output/p.pvd")
 
 filev.write(v)
 filep.write(p)
-filev_hat_bndry.write(v_bndry)
