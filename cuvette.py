@@ -52,4 +52,5 @@ solver.solve()
 u.rename("displacement")
 
 fileu = fd.File(f"out/u.pvd")
+u.rename("displacement")
 fileu.write(u)
