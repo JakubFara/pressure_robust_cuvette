@@ -106,13 +106,13 @@ solver_bndry.solve()
 I = fd.Identity(2)
 F = I + fd.grad(u)
 J = fd.det(F)
-v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "DG", k))
+v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "CG", k))
 
 filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
 filev_hat_bndry.write(v_hat_bndry)
 
 bc_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
-bc_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
+bc_inner = fd.DirichletBC(W.sub(0), v_bndry, (21, 22, 23, 24))
 
 bcs_v_hat = [
     bc_outer,
