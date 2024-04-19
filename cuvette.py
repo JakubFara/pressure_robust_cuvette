@@ -127,7 +127,8 @@ F = I + fd.grad(u)
 J = fd.det(F)
 
 v = 1 / J * F * v_hat
-phi_v = 1 / J * F * phi_v_hat
+# phi_v = 1 / J * F * phi_v_hat
+phi_v = phi_v_hat
 
 
 inv_F = fd.inv(F)
