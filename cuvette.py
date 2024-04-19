@@ -6,7 +6,7 @@ from firedrake.output import VTKFile
 mesh = fd.UnitSquareMesh(20, 20)
 
 k = 1
-V = fd.VectorFunctionSpace(mesh, 'CG', k)
+V = fd.VectorFunctionSpace(mesh, 'DG', k)
 
 # x, y = fd.SpatialCoordinate(mesh)
 # expr_x_outer = x / fd.sqrt(x**2 + y**2)
