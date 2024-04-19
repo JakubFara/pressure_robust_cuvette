@@ -15,7 +15,7 @@ def refine_bary(coarse_mesh):
     return fine_mesh
 
 
-corse_mesh = fd.Mesh("mesh.msh", dim=2)
+coarse_mesh = fd.Mesh("mesh.msh", dim=2)
 mesh = refine_bary(coarse_mesh)
 
 k = 2
