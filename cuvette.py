@@ -20,7 +20,7 @@ mesh = refine_bary(coarse_mesh)
 
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k) # displacement
-Eu = fd.VectorFunctionSpace(mesh, "CG", k) # velocity
+Ev = fd.VectorFunctionSpace(mesh, "CG", k) # velocity
 Ep = fd.FunctionSpace(mesh, "DG", k - 1) # pressure
 W = fd.MixedFunctionSpace([Ev, Ep])
 
