@@ -106,7 +106,7 @@ solver.solve()
 I = fd.Identity(2)
 F = I + fd.grad(u)
 J = fd.det(F)
-v_hat_bndry = fd.project(J * fd.inv(F) * v_hat, fd.VectorFunctionSpace(mesh, "CG", k))
+v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "CG", k))
 
 bc_x_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
 bc_x_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
