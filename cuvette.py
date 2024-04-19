@@ -1,7 +1,7 @@
 import firedrake as fd
 
-# mesh = fd.Mesh("square_with_hole.msh", dim=2)
-mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
+mesh = fd.Mesh("immersed_domain.msh", dim=2)
+# mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
 # mesh = fd.UnitSquareMesh(2,2)
 
 k = 2
