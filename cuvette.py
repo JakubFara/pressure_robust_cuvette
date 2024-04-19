@@ -115,11 +115,11 @@ T = - p * I + 2.0 * mu * D
 # Data Forces
 force = fd.Constant((0, 0))
 
-Eq1 = fd.div(v_hat) * p_ * fd.dx
+Eq1 = fd.div(v_hat) * phi_p * fd.dx
 
 Eq2 = (
-    + J * fd.inner(T * inv_F.T, fd.grad(v_)) * fd.dx
-    - J * rho * fd.inner(force, v_) * fd.dx
+    + J * fd.inner(T * inv_F.T, fd.grad(phi_v)) * fd.dx
+    - J * rho * fd.inner(force, phi_v) * fd.dx
 )
 
 Eq = Eq1 + Eq2
