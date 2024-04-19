@@ -53,4 +53,4 @@ u.rename("displacement")
 
 fileu = fd.File(f"out/u.pvd")
 u.rename("displacement")
-fileu.write(u)
+fileu.write(u, time=0)
