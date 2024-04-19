@@ -51,7 +51,7 @@ u = fd.Function(V)
 phi_u = fd.TestFunction(V)
 v_hat_bndry = fd.Function(V)
 v_bndry = fd.Function(V)
-phi_v_hat_bndry = fd.TestFunction(V)
+phi_v_bndry = fd.TestFunction(V)
 
 form = fd.inner(fd.grad(u), fd.grad(phi_u)) * dx
 jacobian = fd.derivative(form, u)
@@ -98,8 +98,8 @@ bcs_v = [
     bc_y_inner,
 ]
 
-form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_hat_bndry)) * dx
-jacobian_bndry = fd.derivative(form, v_bndry)
+form_bndry = fd.inner(fd.grad(v_bndry), fd.grad(phi_v_bndry)) * dx
+jacobian_bndry = fd.derivative(form_bndry, v_bndry)
 problem_bndry = fd.NonlinearVariationalProblem(form, v_bndry, bcs=bcs_u, J=jacobian_bndry)
 solver_bndry = fd.NonlinearVariationalSolver(problem_bndry, solver_parameters=lu)
 solver.solve()
