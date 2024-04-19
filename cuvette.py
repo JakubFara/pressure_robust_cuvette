@@ -106,7 +106,7 @@ solver_bndry.solve()
 I = fd.Identity(2)
 F = I + fd.grad(u)
 J = fd.det(F)
-v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "CG", k))
+v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "DG", k))
 
 filev_hat_bndry = fd.File(f"output/v_hat_bndry.pvd")
 filev_hat_bndry.write(v_hat_bndry)
