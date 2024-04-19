@@ -119,7 +119,6 @@ bcs_v_hat = [
 ]
 
 
-
 # Build functions
 # full ALE transformation
 I = fd.Identity(2)
@@ -152,7 +151,7 @@ Eq = Eq1 + Eq2
 
 jacobian = fd.derivative(Eq, w)
 
-problem = fd.NonlinearVariationalProblem(Eq, w, bcs=bcs_v, J=jacobian)
+problem = fd.NonlinearVariationalProblem(Eq, w, bcs=bcs_v_hat, J=jacobian)
 lu = {
     "mat_type": "aij",
     "snes_type": "newtonls",
