@@ -36,7 +36,7 @@ u = fd.Function(V)
 # J = fd.derivative(form, u)
 
 fileu = VTKFile(f"out/u.pvd")
-u.rename("displacement")
+# u.rename("displacement")
 fileu.write(u)
 
 # problem = fd.NonlinearVariationalProblem(form, u, bcs=bcs, J=J)
