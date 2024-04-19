@@ -22,14 +22,14 @@ Curve Loop( 9) = {1, 2, 3, 4};
 Curve Loop(10) = {5, 6, 7, 8};
 Plane Surface(1) = {9, 10};
 
-Physical Curve("outer_bottom", 11) = {1};
+Physical Curve("outer_bottom", 15) = {1};
 Physical Curve("outer_left", 12) = {2};
 Physical Curve("outer_top", 13) = {3};
-Physical Curve("outer_bottom", 14) = {4};
+Physical Curve("outer_right", 14) = {4};
 
-Physical Curve("outer_bottom", 21) = {5};
-Physical Curve("outer_left", 22) = {6};
-Physical Curve("outer_top", 23) = {7};
-Physical Curve("outer_bottom", 24) = {8};
+Physical Curve("inner_bottom", 21) = {5};
+Physical Curve("inner_left", 22) = {6};
+Physical Curve("inner_top", 23) = {7};
+Physical Curve("inner_right", 24) = {8};
 
 Physical Surface("surface", 1) = {1};
