@@ -46,6 +46,7 @@ gmsh.model.geo.synchronize()
 
 outer_group = gmsh.model.addPhysicalGroup(1, outer_lines, 3333)  # wall
 inner_group = gmsh.model.addPhysicalGroup(1, inner_lines, 20)  # wall
+inner_group = gmsh.model.geo.
 
 gmsh.model.setPhysicalName(1, outer_group, "outer")
 gmsh.model.setPhysicalName(1, inner_group, "inner")
