@@ -2,7 +2,7 @@ import firedrake as fd
 
 # mesh = fd.Mesh("immersed_domain.msh", dim=2)
 # mesh = fd.Mesh("mesh.msh", dim=2, reorder=False)
-mesh = fd.UnitSquareMesh(2, 2)
+mesh = fd.UnitSquareMesh(20, 20)
 
 k = 1
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
