@@ -108,14 +108,12 @@ F = I + fd.grad(u)
 J = fd.det(F)
 v_hat_bndry = fd.project(J * fd.inv(F) * v_bndry, fd.VectorFunctionSpace(mesh, "CG", k))
 
-bc_x_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
-bc_x_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
+bc_outer = fd.DirichletBC(W.sub(0), (0., 0.), (11, 12, 13, 14))
+bc_inner = fd.DirichletBC(W.sub(0), v_hat_bndry, (21, 22, 23, 24))
 
 bcs_v_hat = [
-    bc_x_outer,
-    bc_y_outer,
-    bc_x_inner,
-    bc_y_inner,
+    bc_outer,
+    bc_inner,
 ]
 
 
