@@ -142,3 +142,4 @@ lu = {
     "pc_factor_mat_solver_type": "mumps"
 }
 solver = fd.NonlinearVariationalSolver(problem, solver_parameters=lu)
+solver.solve()
