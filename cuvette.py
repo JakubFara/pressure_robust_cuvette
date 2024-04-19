@@ -1,8 +1,8 @@
 import firedrake as fd
 
 # mesh = fd.Mesh("square_with_hole.msh", dim=2)
-# mesh = fd.Mesh("mesh.msh", dim=2)
-mesh = fd.UnitSquareMesh(2,2)
+mesh = fd.Mesh("mesh.msh", dim=2)
+# mesh = fd.UnitSquareMesh(2,2)
 
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k)
