@@ -35,7 +35,7 @@ u = fd.Function(V)
 
 # J = fd.derivative(form, u)
 
-fileu = VTKFile(f"out/u.pvd")
+fileu = VTKFile("u.pvd")
 # u.rename("displacement")
 fileu.write(u)
 
