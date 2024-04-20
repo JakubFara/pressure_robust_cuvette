@@ -137,7 +137,7 @@ phi_L = fd.grad(phi_v) * inv_F
 D = 0.5 * (L + L.T)
 phi_D = 0.5 * (phi_L + phi_L.T)
 T = - p * I + 2.0 * mu * D
-phi_T = - p * I + 2 * mu * phi_D
+phi_T = - phi_p * I + 2 * mu * phi_D
 
 # Data Forces
 force = fd.Constant((0, 0))
