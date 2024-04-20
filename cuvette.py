@@ -151,7 +151,7 @@ Eq2 = (
 )
 
 # Nitsche eq. (free surface + walls)
-ds_sum = fd.ds(11) + fd.ds(12) + fd.ds(13) + fd.ds(14)
+ds_sum = fd.ds(21) + fd.ds(22) + fd.ds(23) + fd.ds(24)
 
 n = fd.FacetNormal(mesh)
 h = fd.CellDiameter(mesh)
