@@ -127,8 +127,8 @@ F = I + fd.grad(u)
 J = fd.det(F)
 
 v = 1 / J * F * v_hat
-phi_v = 1 / J * F * phi_v_hat
-# phi_v = phi_v_hat
+# phi_v = 1 / J * F * phi_v_hat
+phi_v = phi_v_hat
 
 
 inv_F = fd.inv(F)
@@ -156,7 +156,7 @@ ds_sum = fd.ds(21) + fd.ds(22) + fd.ds(23) + fd.ds(24)
 n = fd.FacetNormal(mesh)
 h = fd.CellDiameter(mesh)
 Eq4 = (
-    -fd.inner(T * n, phi_v) * ds_sum
+    - fd.inner(T * n, phi_v) * ds_sum
     + fd.inner(phi_T * n, v - v_bndry) * ds_sum
     + 1000.0 / h * fd.inner(v - v_bndry, phi_v) * ds_sum
 )
