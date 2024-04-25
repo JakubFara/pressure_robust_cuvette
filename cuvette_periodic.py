@@ -26,10 +26,10 @@ x, y = fd.SpatialCoordinate(mesh)
 theta = x * np.pi / length_x
 r0 = 1.0
 r = r0 + y
-expr_x_outer = r * np.cos(theta) - x
-expr_y_outer = r * np.sin(theta) - y
-expr_x_inner = r * np.cos(theta) - x
-expr_y_inner = r * np.sin(theta) - y
+expr_x_outer = r * fd.cos(theta) - x
+expr_y_outer = r * fd.sin(theta) - y
+expr_x_inner = r * fd.cos(theta) - x
+expr_y_inner = r * fd.sin(theta) - y
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, 1)
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, 1)
