@@ -24,6 +24,7 @@ x, y = fd.SpatialCoordinate(mesh)
 # expr_x_inner = fd.sqrt(2) * 0.5 * (x - length_x / 2) / fd.sqrt(x**2 + ((x - length_x / 2) + 0.5)**2) - x
 # expr_y_inner = fd.sqrt(2) * 0.5 * (y + 0.5) / fd.sqrt(x**2 + (y + 0.5)**2) - y
 theta = x * np.pi / length_x
+r0 = 1.0
 r = r0 + y
 expr_x_outer = r * cos(theta) - x
 expr_y_outer = r * sin(theta) - y
