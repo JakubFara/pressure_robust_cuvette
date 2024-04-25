@@ -37,8 +37,8 @@ expr_y_inner = fd.sqrt(2) * 0.5 * (y + 0.5) / fd.sqrt(x**2 + (y + 0.5)**2) - y
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, 1)
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, 1)
-bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner, 3)
-bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner, 3)
+bc_x_inner = fd.DirichletBC(V.sub(0), expr_x_inner, 2)
+bc_y_inner = fd.DirichletBC(V.sub(1), expr_y_inner, 2)
 
 bcs_u = [
     bc_x_outer,
