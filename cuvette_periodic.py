@@ -1,6 +1,7 @@
 import firedrake as fd
 from firedrake.output import VTKFile
 from make_periodic_refined_mesh import PartiallyPeriodicRefinedRectangleMesh
+import numpy as np
 
 
 nx = 100
