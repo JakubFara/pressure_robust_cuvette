@@ -28,7 +28,8 @@ from firedrake.petsc import PETSc
 
 from pyadjoint.tape import no_annotations
 
-
+distribution_parameters_noop = {"partition": False,
+                                "overlap_type": (mesh.DistributedMeshOverlapType.NONE, 0)}
 reorder_noop = False
 
 
