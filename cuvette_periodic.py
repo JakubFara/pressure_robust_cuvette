@@ -1,25 +1,13 @@
 import firedrake as fd
 from firedrake.output import VTKFile
-
-
-def refine_bary(coarse_mesh):
-    """Return barycentric refinement of given input mesh"""
-    from petsc4py import PETSc
-    coarse_dm = coarse_mesh.topology_dm
-    transform = PETSc.DMPlexTransform().create(comm=coarse_dm.getComm())
-    transform.setType(PETSc.DMPlexTransformType.REFINEALFELD)
-    transform.setDM(coarse_dm)
-    transform.setUp()
-    fine_dm = transform.apply(coarse_dm)
-    fine_mesh = fd.Mesh(fine_dm)
-    return fine_mesh
+from make_periodic_refined_mesh import PartiallyPeriodicRefinedRectangleMesh
 
 
 nx = 100
 ny = 10
 length_x = 10.0
 length_y = 1.0
-coarse_mesh = fd.PeriodicRectangleMesh(nx, ny, length_x, length_y, direction="x")
+coarse_mesh = PartiallyPeriodicRefinedRectangleMesh(nx, ny, length_x, length_y, direction="x")
 # mesh = refine_bary(coarse_mesh)
 mesh = coarse_mesh
 
