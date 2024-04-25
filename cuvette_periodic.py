@@ -21,7 +21,7 @@ length_x = 10.0
 length_y = 1.0
 coarse_mesh = fd.PeriodicRectangleMesh(nx, ny, length_x, length_y, direction="x")
 # mesh = refine_bary(coarse_mesh)
-mesh = corse_mesh
+mesh = coarse_mesh
 
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k) # displacement
