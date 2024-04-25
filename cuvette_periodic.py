@@ -18,10 +18,16 @@ Ep = fd.FunctionSpace(mesh, "DG", k - 1) # pressure
 W = fd.MixedFunctionSpace([Ev, Ep])
 
 x, y = fd.SpatialCoordinate(mesh)
-expr_x_outer = fd.sqrt(2) * (x - length_x / 2) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - x
-expr_y_outer = fd.sqrt(2) * (y + 0.5) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - y
-expr_x_inner = fd.sqrt(2) * 0.5 * (x - length_x / 2) / fd.sqrt(x**2 + ((x - length_x / 2) + 0.5)**2) - x
-expr_y_inner = fd.sqrt(2) * 0.5 * (y + 0.5) / fd.sqrt(x**2 + (y + 0.5)**2) - y
+# expr_x_outer = fd.sqrt(2) * (x - length_x / 2) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - x
+# expr_y_outer = fd.sqrt(2) * (y + 0.5) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - y
+# expr_x_inner = fd.sqrt(2) * 0.5 * (x - length_x / 2) / fd.sqrt(x**2 + ((x - length_x / 2) + 0.5)**2) - x
+# expr_y_inner = fd.sqrt(2) * 0.5 * (y + 0.5) / fd.sqrt(x**2 + (y + 0.5)**2) - y
+theta = x * np.pi / length_x
+r = r0 + y
+expr_x_outer = r * cos(theta) - x
+expr_y_outer = r * sin(theta) - y
+expr_x_inner = r * cos(theta) - x
+expr_y_inner = r * sin(theta) - y
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, 1)
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, 1)
