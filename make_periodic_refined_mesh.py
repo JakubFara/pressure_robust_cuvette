@@ -29,6 +29,9 @@ from firedrake.petsc import PETSc
 from pyadjoint.tape import no_annotations
 
 
+reorder_noop = False
+
+
 def refine_bary(coarse_mesh):
     """Return barycentric refinement of given input mesh"""
     from petsc4py import PETSc
