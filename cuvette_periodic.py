@@ -14,12 +14,14 @@ def refine_bary(coarse_mesh):
     fine_mesh = fd.Mesh(fine_dm)
     return fine_mesh
 
+
 nx = 100
 ny = 10
 length_x = 10.0
 length_y = 1.0
-coarse_mesh = fd.PeriodicRectangleMesh(nx, ny, length_x, length_y)
-mesh = refine_bary(coarse_mesh)
+coarse_mesh = fd.PeriodicRectangleMesh(nx, ny, length_x, length_y, direction="x")
+# mesh = refine_bary(coarse_mesh)
+mesh = corse_mesh
 
 k = 2
 V = fd.VectorFunctionSpace(mesh, 'CG', k) # displacement
@@ -28,10 +30,10 @@ Ep = fd.FunctionSpace(mesh, "DG", k - 1) # pressure
 W = fd.MixedFunctionSpace([Ev, Ep])
 
 x, y = fd.SpatialCoordinate(mesh)
-expr_x_outer = fd.sqrt(2) * x / fd.sqrt(x**2 + y**2) - x
-expr_y_outer = fd.sqrt(2) * y / fd.sqrt(x**2 + y**2) - y
-expr_x_inner = fd.sqrt(2) * 0.5 * x / fd.sqrt(x**2 + y**2) - x
-expr_y_inner = fd.sqrt(2) * 0.5 * y / fd.sqrt(x**2 + y**2) - y
+expr_x_outer = fd.sqrt(2) * (x - length_x / 2) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - x
+expr_y_outer = fd.sqrt(2) * (y + 0.5) / fd.sqrt((x - length_x / 2)**2 + (y + 0.5)**2) - y
+expr_x_inner = fd.sqrt(2) * 0.5 * (x - length_x / 2) / fd.sqrt(x**2 + ((x - length_x / 2) + 0.5)**2) - x
+expr_y_inner = fd.sqrt(2) * 0.5 * (y + 0.5) / fd.sqrt(x**2 + (y + 0.5)**2) - y
 
 bc_x_outer = fd.DirichletBC(V.sub(0), expr_x_outer, 1)
 bc_y_outer = fd.DirichletBC(V.sub(1), expr_y_outer, 1)
