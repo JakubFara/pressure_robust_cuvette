@@ -19,6 +19,7 @@ from firedrake import (
     interval,
     tetrahedron,
     CylinderMesh,
+    Mesh,
 )
 from firedrake.cython import dmcommon
 from firedrake import mesh
@@ -42,7 +43,7 @@ def refine_bary(coarse_mesh):
     transform.setDM(coarse_dm)
     transform.setUp()
     fine_dm = transform.apply(coarse_dm)
-    fine_mesh = fd.Mesh(fine_dm)
+    fine_mesh = Mesh(fine_dm)
     return fine_mesh
 
 
